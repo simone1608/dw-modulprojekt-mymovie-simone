@@ -1,0 +1,39 @@
+/* #region RESETS */
+html {
+    scroll-behavior: smooth;
+}
+
+:root {}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1.5;
+}
+
+/* #endregion RESETS */
