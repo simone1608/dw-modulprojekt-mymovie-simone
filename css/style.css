@@ -31,9 +31,37 @@ video {
     height: auto;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 body {
     font-family: sans-serif;
     line-height: 1.5;
 }
 
 /* #endregion RESETS */
+
+/* #region Header */
+/* #endregion Header */
+
+/* #region Showing */
+.movie-rating img {
+    width: 15px;
+    height: 15px;
+}
+
+.movie-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* #endregion Showing */
+
+/* #region Popular */
+/* #endregion Popular */
+
+/* #region Footer */
+/* #endregion Footer */

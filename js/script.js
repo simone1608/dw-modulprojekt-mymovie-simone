@@ -1,5 +1,5 @@
 import Header from "../components/Header.js";
-import MovieList from "../components/MovieList.js";
+import NowPlaying from "../components/NowPlaying.js";
 
 
 let nowPlayingMovies = [];
@@ -14,7 +14,7 @@ function render() {
 
     let mainElement = document.createElement("main");
 
-    mainElement.append(MovieList(nowPlayingMovies));
+    mainElement.append(NowPlaying(nowPlayingMovies));
 
     rootElement.append(mainElement);
 }
@@ -29,7 +29,24 @@ fetch("https://api.themoviedb.org/3/movie/now_playing", {
         return response.json();
     })
     .then(function (data) {
+        console.log(data);
         nowPlayingMovies = data.results;
+
+        render();
+    });
+
+fetch("https://api.themoviedb.org/3/movie/popular", {
+    headers: {
+        accept: "application/json",
+        Authorization: "bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwODExYTlmYTViNWJkYTU5YTc3Y2E3Zjk4NjVlOTQ2ZCIsIm5iZiI6MTc5MDU4Mzk1My45NzgsInN1YiI6IjZhYmEyNDkxM2RkYmY2OTgwMmYyYWJkMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._OC4Sc1VkWxEH138MP3yu43SbLD_Qt_9syNGl3bJP_Q"
+    }
+})
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        popularMovies = data.results;
+        console.log(popularMovies);
 
         render();
     });
