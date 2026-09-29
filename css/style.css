@@ -103,16 +103,19 @@ body {
     display: flex;
     flex-direction: column;
     flex: 1;
+    margin: auto 0;
 }
 
 .popular-info h3 {
-    font-size: 0.7rem;
+    font-size: 1rem;
+    margin: 0.2rem 0;
 }
 
 .genres {
     display: flex;
     gap: 0.3rem;
     flex-wrap: wrap;
+    margin: 0.2rem 0;
 }
 
 .genre {
@@ -122,6 +125,22 @@ body {
     font-size: 0.6rem;
     text-transform: uppercase;
     white-space: nowrap;
+}
+
+.runtime {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin: 0.2rem 0;
+}
+
+.time-img {
+    width: 12px;
+    height: 12px;
+}
+
+.time {
+    font-size: 0.8rem;
 }
 
 /* #endregion Popular */

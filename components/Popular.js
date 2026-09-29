@@ -19,7 +19,7 @@ export default function Popular(movies, genres) {
             let genre = genres.find(function (genre) {
                 return genre.id === genreId;
             });
-            console.log(genreId, genre);
+
             genreHTML += `
                 <span class="genre">${genre.name}</span>
             `;
@@ -42,6 +42,14 @@ export default function Popular(movies, genres) {
                         <div class="genres">
                             ${genreHTML}
                         </div>
+
+                        <div class="runtime">
+                            <img src="img/time.svg" alt="runtime" class="time-img">
+                            <p class="time">
+                                ${movie.runtime || ""}
+                            </p>
+                        </div>
+                        
                     </div>
                 </article>
             </a>

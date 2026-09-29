@@ -17,7 +17,9 @@ function render() {
     let mainElement = document.createElement("main");
 
     mainElement.append(NowPlaying(nowPlayingMovies));
-    mainElement.append(Popular(popularMovies, genres));
+    if (popularMovies.length > 0 && genres.length > 0) {
+        mainElement.append(Popular(popularMovies, genres));
+    }
 
     rootElement.append(mainElement);
 }
@@ -50,7 +52,28 @@ fetch("https://api.themoviedb.org/3/movie/popular", {
     .then(function (data) {
         popularMovies = data.results;
 
-        render();
+        popularMovies.forEach(function (movie) {
+            console.log(movie.id);
+
+            fetch(`https://api.themoviedb.org/3/movie/${movie.id}`, {
+                headers: {
+                    accept: "application/json",
+                    Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwODExYTlmYTViNWJkYTU5YTc3Y2E3Zjk4NjVlOTQ2ZCIsIm5iZiI6MTc5MDU4Mzk1My45NzgsInN1YiI6IjZhYmEyNDkxM2RkYmY2OTgwMmYyYWJkMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._OC4Sc1VkWxEH138MP3yu43SbLD_Qt_9syNGl3bJP_Q"
+                }
+            })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    let hours = Math.floor(data.runtime / 60);
+                    let minutes = data.runtime % 60;
+
+                    movie.runtime = hours + "h " + minutes + "m";
+
+                    render();
+                });
+        });
+
     });
 
 
@@ -65,8 +88,6 @@ fetch("https://api.themoviedb.org/3/genre/movie/list", {
     })
     .then(function (data) {
         genres = data.genres;
-        console.log(genres);
-
 
         render();
     });
