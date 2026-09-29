@@ -40,3 +40,74 @@ body {
 }
 
 /* #endregion RESETS */
+
+/* #region Movie poster */
+.detail-backdrop {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* #endregion Movie poster  */
+
+/* #region Movie info */
+.genres {
+    display: flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+    margin: 0.2rem 0;
+}
+
+.genre {
+    padding: 0.3rem 0.7rem;
+    border-radius: 1rem;
+    background-color: #e4e8ff;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* #endregion Movie info */
+
+/* #region Movie cast */
+.cast-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.see-more-cast {
+    font-size: 0.8rem;
+    background-color: inherit;
+    color: rgb(155, 155, 155);
+    border: 2px solid lightgray;
+    border-radius: 1rem;
+    padding: 0.1rem 0.4rem;
+}
+
+.cast-list {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin: 0 0.5rem;
+}
+
+.cast-person {
+    width: 80px;
+}
+
+.cast-person img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0.4rem;
+}
+
+.cast-person p {
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+/* #endregion Movie cast */
