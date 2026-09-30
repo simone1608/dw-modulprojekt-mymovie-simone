@@ -24,6 +24,7 @@ export default function NowPlaying(movies) {
                     <p class="movie-rating">
                         <img src="img/star.svg" alt="Star" class="star-img">
                         ${movie.vote_average.toFixed(1)}/10
+                        IMDb
                     </p>
                 </article>
             </a>

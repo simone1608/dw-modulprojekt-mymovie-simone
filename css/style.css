@@ -37,6 +37,7 @@ a {
 body {
     font-family: sans-serif;
     line-height: 1.5;
+    padding-bottom: 5rem;
 }
 
 #root {
@@ -47,9 +48,11 @@ body {
 
 /* #region Header */
 header {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    padding: 1rem;
 }
 
 h1 {
@@ -57,9 +60,18 @@ h1 {
     text-align: center;
 }
 
+header .switch {
+    position: absolute;
+    right: 1rem;
+}
+
 /* #endregion Header */
 
 /* #region Showing */
+.h2 {
+    font-size: 1.5rem;
+}
+
 .movie-list {
     display: flex;
     gap: 1rem;
@@ -68,7 +80,11 @@ h1 {
 
 .now-movie {
     flex-shrink: 0;
-    width: 120px;
+    width: 140px;
+}
+
+.showing-poster {
+    border-radius: 0.5rem;
 }
 
 .now-movie h3 {
@@ -157,4 +173,40 @@ h1 {
 /* #endregion Popular */
 
 /* #region Footer */
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4.5rem;
+    background-color: white;
+    z-index: 10;
+}
+
+footer a {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-movie {
+    width: 2.8rem;
+    height: 2.8rem;
+    margin-top: 0.7rem;
+}
+
+.footer-ticket {
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.footer-saved {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
 /* #endregion Footer */
