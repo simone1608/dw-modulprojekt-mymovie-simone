@@ -1,4 +1,4 @@
-export default function MovieDetail(movie, cast) {
+export default function MovieDetail(movie, cast, rating) {
     let sectionElement = document.createElement("section");
     sectionElement.classList.add("movie-detail");
 
@@ -7,6 +7,19 @@ export default function MovieDetail(movie, cast) {
 
     let genreHTML = "";
     let castHTML = "";
+
+    let languages = {
+        en: "English",
+        da: "Danish",
+        de: "German",
+        fr: "French",
+        es: "Spanish",
+        it: "Italian",
+        ja: "Japanese",
+        ko: "Korean"
+    };
+
+    let language = languages[movie.original_language] || movie.original_language;
 
     movie.genres.forEach(function (genre) {
         genreHTML += `
@@ -27,45 +40,66 @@ export default function MovieDetail(movie, cast) {
     });
 
     sectionElement.innerHTML = `
+        <a href="index.html" class="back-arrow">
+            <img src="img/back-arrow.svg" alt="Back">
+        </a>
+
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+
         <img 
             class="detail-backdrop"
             src="https://image.tmdb.org/t/p/original${movie.backdrop_path}"
             alt="${movie.title}">
 
-        <h1>${movie.title}</h1>
 
-        <p class="movie-rating">
-            <img src="img/star.svg" alt="Star" class="star-img">
-            ${movie.vote_average.toFixed(1)}/10
-        </p>
+        <div class="movie-info">
+            <section class="detail-heading">
+                <h1>${movie.title}</h1>
+                <img src="img/saved.svg" alt="Saved" class="saved-img">
+            </section>
 
-        <div class="genres">
-            ${genreHTML}
-        </div>
+            <p class="movie-rating">
+                <img src="img/star.svg" alt="Star" class="star-img">
+                ${movie.vote_average.toFixed(1)}/10
+                IMBb
+            </p>
 
-        <section class="detail-info">
-
-            <div>
-                <p>Length</p>
-                <span>${hours}h ${minutes}min</span>
+            <div class="genres">
+                ${genreHTML}
             </div>
 
-            <div>
-                <p>Language</p>
-                <span>${movie.original_language}</span>
+            <section class="detail-info">
+
+                <div>
+                    <p>Length</p>
+                    <span>${hours}h ${minutes}min</span>
+                </div>
+
+                <div>
+                    <p>Language</p>
+                    <span>${language}</span>
+                </div>
+                <div>
+                    <p>Rating</p>
+                    <span>${rating}</span>
+                </div>
+
+            </section>
+            
+            <h2 class="description">Description</h2>
+            <p>${movie.overview}</p>
+
+            <div class="cast-heading">
+                <h3 class="cast">Cast</h3>
+                <button class="see-more-cast">See more</button>
             </div>
 
-        </section>
-
-        <p>${movie.overview}</p>
-
-        <div class="cast-heading">
-            <h2>Cast</h2>
-            <button class="see-more-cast">See more</button>
-        </div>
-
-        <div class="cast-list">
-            ${castHTML}
+            <div class="cast-list">
+                ${castHTML}
+            </div>
         </div>
     `;
 
