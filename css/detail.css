@@ -35,8 +35,12 @@ a {
 }
 
 body {
-    font-family: sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5;
+}
+
+.movie-detail {
+    position: relative;
 }
 
 /* #endregion RESETS */
@@ -65,7 +69,7 @@ body {
 /* #endregion Movie poster  */
 
 /* #region Dark mode switch  */
-.detail-backdrop>.switch {
+.movie-detail>.switch {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -75,11 +79,33 @@ body {
 /* #endregion Dark mode switch  */
 
 /* #region Movie info */
+.movie-info {
+    margin: 0 0.5rem;
+}
+
+.detail-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.detail-heading h1 {
+    font-size: 1.7rem;
+    flex: 1;
+}
+
+.saved-img {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 0.5rem;
+}
+
 .genres {
     display: flex;
     gap: 0.3rem;
     flex-wrap: wrap;
-    margin: 0.2rem 0;
+    margin: 0.5rem 0;
 }
 
 .genre {
@@ -91,6 +117,42 @@ body {
     white-space: nowrap;
 }
 
+.detail-info {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0.8rem 0;
+}
+
+.info {
+    text-align: center;
+}
+
+.info p {
+    font-size: 0.9rem;
+    color: gray;
+}
+
+.info span {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+h2,
+h3 {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.description {
+    margin-top: 1rem;
+}
+
+.description-info {
+    color: gray;
+    margin-top: 0.2rem;
+}
+
 /* #endregion Movie info */
 
 /* #region Movie cast */
@@ -98,8 +160,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 0.5rem;
-    margin-bottom: 0.5rem;
+    margin: 0.5rem 0;
 }
 
 .see-more-cast {
@@ -115,7 +176,6 @@ body {
     display: flex;
     gap: 0.8rem;
     flex-wrap: wrap;
-    margin: 0 0.5rem;
 }
 
 .cast-person {

@@ -64,7 +64,7 @@ export default function MovieDetail(movie, cast, rating) {
             <p class="movie-rating">
                 <img src="img/star.svg" alt="Star" class="star-img">
                 ${movie.vote_average.toFixed(1)}/10
-                IMBb
+                IMDb
             </p>
 
             <div class="genres">
@@ -73,16 +73,16 @@ export default function MovieDetail(movie, cast, rating) {
 
             <section class="detail-info">
 
-                <div>
+                <div class="info">
                     <p>Length</p>
                     <span>${hours}h ${minutes}min</span>
                 </div>
 
-                <div>
+                <div class="info">
                     <p>Language</p>
                     <span>${language}</span>
                 </div>
-                <div>
+                <div class="info">
                     <p>Rating</p>
                     <span>${rating}</span>
                 </div>
@@ -90,7 +90,7 @@ export default function MovieDetail(movie, cast, rating) {
             </section>
             
             <h2 class="description">Description</h2>
-            <p>${movie.overview}</p>
+            <p class="description-info">${movie.overview}</p>
 
             <div class="cast-heading">
                 <h3 class="cast">Cast</h3>
