@@ -3,7 +3,10 @@ export default function Popular(movies, genres) {
     sectionElement.classList.add("popular-section")
 
     sectionElement.innerHTML = `
-        <h2>Popular</h2>
+        <section class="title">
+            <h2>Popular</h2>
+            <button class="see-more-btn">See more</button>
+        </section>
 
         <div class="popular-list"></div>
     `;

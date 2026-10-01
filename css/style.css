@@ -41,10 +41,28 @@ body {
 }
 
 #root {
-    margin: 0 0.5rem;
+    margin: 0 1rem;
 }
 
 /* #endregion RESETS */
+
+/* #region Both */
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.see-more-btn {
+    font-size: 0.8rem;
+    background-color: inherit;
+    color: rgb(155, 155, 155);
+    border: 2px solid lightgray;
+    border-radius: 1rem;
+    padding: 0.1rem 0.4rem;
+}
+
+/* #endregion Both */
 
 /* #region Header */
 header {

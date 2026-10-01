@@ -80,7 +80,7 @@ body {
 
 /* #region Movie info */
 .movie-info {
-    margin: 0 0.5rem;
+    margin: 0 1rem;
 }
 
 .detail-heading {
@@ -179,12 +179,12 @@ h3 {
 }
 
 .cast-person {
-    width: 80px;
+    width: 75px;
 }
 
 .cast-person img {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
     object-fit: cover;
     border-radius: 0.4rem;
 }

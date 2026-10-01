@@ -3,8 +3,11 @@ export default function NowPlaying(movies) {
     sectionElement.classList.add("showing-section");
 
     sectionElement.innerHTML = `
-        <h2>Now Showing</h2>
-
+        <section class="title">
+            <h2>Now Showing</h2>
+            <button class="see-more-btn">See more</button>
+        </section>
+        
         <div class="movie-list">
 
         </div>
