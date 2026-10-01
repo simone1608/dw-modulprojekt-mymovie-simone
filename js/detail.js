@@ -70,3 +70,21 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}/release_dates`, {
 
         render();
     });
+
+fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos`, {
+    headers: {
+        accept: "application/json",
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwODExYTlmYTViNWJkYTU5YTc3Y2E3Zjk4NjVlOTQ2ZCIsIm5iZiI6MTc5MDU4Mzk1My45NzgsInN1YiI6IjZhYmEyNDkxM2RkYmY2OTgwMmYyYWJkMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._OC4Sc1VkWxEH138MP3yu43SbLD_Qt_9syNGl3bJP_Q"
+    }
+})
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        let trailer = data.results.find(function (video) {
+            return video.type === "Trailer" && video.site === "YouTube";
+        });
+
+        console.log(trailer);
+
+    });

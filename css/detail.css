@@ -118,6 +118,7 @@ body {
     background-color: var(--genre-background);
     color: var(--genre-color);
     font-size: 0.6rem;
+    font-weight: bold;
     text-transform: uppercase;
     white-space: nowrap;
 }
@@ -178,9 +179,9 @@ h3 {
 }
 
 .cast-list {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 0.8rem;
-    flex-wrap: wrap;
 }
 
 .cast-person {
@@ -188,8 +189,8 @@ h3 {
 }
 
 .cast-person img {
-    width: 75px;
-    height: 75px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     border-radius: 0.4rem;
 }
