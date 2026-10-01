@@ -9,6 +9,17 @@ let nowPlayingMovies = [];
 let popularMovies = [];
 let genres = [];
 
+let popularPage = 1;
+
+let observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+            popularPage = popularPage + 1;
+            fetchPopularMovies()
+        }
+    })
+})
+
 let rootElement = document.querySelector("#root");
 
 function render() {
@@ -26,6 +37,15 @@ function render() {
     rootElement.append(mainElement);
 
     rootElement.append(Footer());
+
+    observer.disconnect();
+
+    let fifthLastMovie = document.querySelector(".popular-list .movie-link:nth-last-of-type(5)");
+    if (fifthLastMovie) {
+        observer.observe(fifthLastMovie);
+
+    }
+
 
     DarkMode();
 }
@@ -46,41 +66,44 @@ fetch("https://api.themoviedb.org/3/movie/now_playing", {
     });
 
 
-fetch("https://api.themoviedb.org/3/movie/popular", {
-    headers: {
-        accept: "application/json",
-        Authorization: "bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwODExYTlmYTViNWJkYTU5YTc3Y2E3Zjk4NjVlOTQ2ZCIsIm5iZiI6MTc5MDU4Mzk1My45NzgsInN1YiI6IjZhYmEyNDkxM2RkYmY2OTgwMmYyYWJkMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._OC4Sc1VkWxEH138MP3yu43SbLD_Qt_9syNGl3bJP_Q"
-    }
-})
-    .then(function (response) {
-        return response.json();
+function fetchPopularMovies() {
+    fetch(`https://api.themoviedb.org/3/movie/popular?page=${popularPage}`, {
+        headers: {
+            accept: "application/json",
+            Authorization: "bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwODExYTlmYTViNWJkYTU5YTc3Y2E3Zjk4NjVlOTQ2ZCIsIm5iZiI6MTc5MDU4Mzk1My45NzgsInN1YiI6IjZhYmEyNDkxM2RkYmY2OTgwMmYyYWJkMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._OC4Sc1VkWxEH138MP3yu43SbLD_Qt_9syNGl3bJP_Q"
+        }
     })
-    .then(function (data) {
-        popularMovies = data.results;
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            popularMovies = [...popularMovies, ...data.results];
 
-        popularMovies.forEach(function (movie) {
-            console.log(movie.id);
+            data.results.forEach(function (movie) {
 
-            fetch(`https://api.themoviedb.org/3/movie/${movie.id}`, {
-                headers: {
-                    accept: "application/json",
-                    Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwODExYTlmYTViNWJkYTU5YTc3Y2E3Zjk4NjVlOTQ2ZCIsIm5iZiI6MTc5MDU4Mzk1My45NzgsInN1YiI6IjZhYmEyNDkxM2RkYmY2OTgwMmYyYWJkMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._OC4Sc1VkWxEH138MP3yu43SbLD_Qt_9syNGl3bJP_Q"
-                }
-            })
-                .then(function (response) {
-                    return response.json();
+                fetch(`https://api.themoviedb.org/3/movie/${movie.id}`, {
+                    headers: {
+                        accept: "application/json",
+                        Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwODExYTlmYTViNWJkYTU5YTc3Y2E3Zjk4NjVlOTQ2ZCIsIm5iZiI6MTc5MDU4Mzk1My45NzgsInN1YiI6IjZhYmEyNDkxM2RkYmY2OTgwMmYyYWJkMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._OC4Sc1VkWxEH138MP3yu43SbLD_Qt_9syNGl3bJP_Q"
+                    }
                 })
-                .then(function (data) {
-                    let hours = Math.floor(data.runtime / 60);
-                    let minutes = data.runtime % 60;
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        let hours = Math.floor(data.runtime / 60);
+                        let minutes = data.runtime % 60;
 
-                    movie.runtime = hours + "h " + minutes + "m";
+                        movie.runtime = hours + "h " + minutes + "m";
 
-                    render();
-                });
+                        render();
+                    });
+            });
+
         });
+}
 
-    });
+fetchPopularMovies()
 
 
 fetch("https://api.themoviedb.org/3/genre/movie/list", {
