@@ -45,7 +45,7 @@ export default function MovieDetail(movie, cast, rating) {
         </a>
 
         <label class="switch">
-            <input type="checkbox">
+            <input type="checkbox" id="switch">
             <span class="slider"></span>
         </label>
 

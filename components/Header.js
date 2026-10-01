@@ -6,7 +6,7 @@ export default function Header() {
         <h1>MyMovies</h1>
 
         <label class="switch">
-            <input type="checkbox">
+            <input type="checkbox" id="switch">
             <span class="slider"></span>
         </label>
     `;
