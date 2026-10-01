@@ -37,6 +37,10 @@ a {
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5;
+
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+    transition: color 0.3s, background-color 0.3s;
 }
 
 .movie-detail {
@@ -111,7 +115,8 @@ body {
 .genre {
     padding: 0.3rem 0.7rem;
     border-radius: 1rem;
-    background-color: #e4e8ff;
+    background-color: var(--genre-background);
+    color: var(--genre-color);
     font-size: 0.6rem;
     text-transform: uppercase;
     white-space: nowrap;
@@ -130,7 +135,7 @@ body {
 
 .info p {
     font-size: 0.9rem;
-    color: gray;
+    color: var(--color-secondary);
 }
 
 .info span {
@@ -166,8 +171,8 @@ h3 {
 .see-more-cast {
     font-size: 0.8rem;
     background-color: inherit;
-    color: rgb(155, 155, 155);
-    border: 2px solid lightgray;
+    color: var(--color-secondary);
+    border: 2px solid var(--color-secondary);
     border-radius: 1rem;
     padding: 0.1rem 0.4rem;
 }

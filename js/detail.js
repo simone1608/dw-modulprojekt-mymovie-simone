@@ -1,4 +1,5 @@
 import MovieDetail from "../components/MovieDetail.js";
+import DarkMode from "../js/darkmode.js";
 
 const rootElement = document.querySelector("#root");
 
@@ -14,6 +15,7 @@ function render() {
     if (movie && cast.length > 0 && rating) {
         rootElement.innerHTML = "";
         rootElement.append(MovieDetail(movie, cast, rating));
+        DarkMode();
     }
 }
 

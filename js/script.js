@@ -2,6 +2,7 @@ import Header from "../components/Header.js";
 import NowPlaying from "../components/NowPlaying.js";
 import Popular from "../components/Popular.js";
 import Footer from "../components/Footer.js";
+import DarkMode from "../js/darkmode.js";
 
 
 let nowPlayingMovies = [];
@@ -25,6 +26,8 @@ function render() {
     rootElement.append(mainElement);
 
     rootElement.append(Footer());
+
+    DarkMode();
 }
 
 fetch("https://api.themoviedb.org/3/movie/now_playing", {
