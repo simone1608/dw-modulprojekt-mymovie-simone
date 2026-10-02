@@ -92,6 +92,19 @@ body {
     position: relative;
 }
 
+.no-backdrop {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-backdrop p {
+    color: var(--color-secondary);
+}
+
 /* #endregion Movie poster  */
 
 /* #region Dark mode switch  */

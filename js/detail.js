@@ -63,11 +63,20 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}/release_dates`, {
             return release.iso_3166_1 === "US";
         });
 
-        let ratingInfo = usRelease.release_dates.find(function (release) {
-            return release.certification !== "";
-        });
+        if (usRelease) {
+            let ratingInfo = usRelease.release_dates.find(function (release) {
+                return release.certification !== "";
+            });
 
-        rating = ratingInfo.certification;
+            if (ratingInfo) {
+                rating = ratingInfo.certification;
+            } else {
+                rating = "N/A";
+            }
+
+        } else {
+            rating = "N/A";
+        }
 
         render();
     });

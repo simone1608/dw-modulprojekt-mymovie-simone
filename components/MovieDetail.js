@@ -13,30 +13,77 @@ export default function MovieDetail(movie, cast, rating, trailer) {
                 allowfullscreen>
             </iframe>
         `;
-    } else {
+    } else if (movie.backdrop_path) {
         mediaHTML = `
             <img
-                src=""
+                src="https://image.tmdb.org/t/p/original${movie.backdrop_path}"
                 alt="${movie.title}"
                 class="detail-backdrop">
+        `;
+    } else {
+        mediaHTML = `
+            <div class="no-backdrop">
+                <p>No image available</p>
+            </div>
         `;
     }
 
     let hours = Math.floor(movie.runtime / 60);
     let minutes = movie.runtime % 60;
+    let runtime = "";
+
+    if (movie.runtime > 0) {
+        runtime = `${hours}h ${minutes}min`;
+    } else {
+        runtime = "N/A";
+    }
 
     let genreHTML = "";
     let castHTML = "";
 
     let languages = {
+        // English
         en: "English",
+
+        // Nordic languages
         da: "Danish",
+        sv: "Swedish",
+        no: "Norwegian",
+        fi: "Finnish",
+
+        // Western European languages
         de: "German",
         fr: "French",
         es: "Spanish",
         it: "Italian",
+        nl: "Dutch",
+        pt: "Portuguese",
+
+        // Southern European language
+        el: "Greek",
+
+        // Central and Eastern European languages
+        pl: "Polish",
+        ru: "Russian",
+        uk: "Ukrainian",
+        cs: "Czech",
+
+        // Middle Eastern languages
+        ar: "Arabic",
+        tr: "Turkish",
+        he: "Hebrew",
+        fa: "Persian",
+
+        // East Asian languages
+        zh: "Chinese",
         ja: "Japanese",
-        ko: "Korean"
+        ko: "Korean",
+
+        // South and Southeast Asian languages
+        hi: "Hindi",
+        th: "Thai",
+        vi: "Vietnamese",
+        id: "Indonesian"
     };
 
     let language = languages[movie.original_language] || movie.original_language;
@@ -94,7 +141,7 @@ export default function MovieDetail(movie, cast, rating, trailer) {
 
                 <div class="info">
                     <p>Length</p>
-                    <span>${hours}h ${minutes}min</span>
+                    <span>${runtime}</span>
                 </div>
 
                 <div class="info">
