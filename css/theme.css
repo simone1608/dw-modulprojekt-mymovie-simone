@@ -55,6 +55,7 @@
     --color-background: white;
     --color-foreground: black;
     --color-secondary: gray;
+    --back-arrow-filter: invert(1);
     --genre-background: #dbe3ff;
     --genre-color: #88a4e8;
     --color-footer: white;
@@ -64,6 +65,7 @@
     --color-background: #121212;
     --color-foreground: white;
     --color-secondary: #b3b3b3;
+    --back-arrow-filter: none;
     --genre-background: #dbe3ff;
     --genre-color: #88a4e8;
     --color-footer: #1c1c1c;

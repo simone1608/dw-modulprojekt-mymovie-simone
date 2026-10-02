@@ -10,11 +10,12 @@ const movieId = params.get("id");
 let movie;
 let cast = [];
 let rating = "";
+let trailer;
 
 function render() {
     if (movie && cast.length > 0 && rating) {
         rootElement.innerHTML = "";
-        rootElement.append(MovieDetail(movie, cast, rating));
+        rootElement.append(MovieDetail(movie, cast, rating, trailer));
         DarkMode();
     }
 }
@@ -81,10 +82,10 @@ fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos`, {
         return response.json();
     })
     .then(function (data) {
-        let trailer = data.results.find(function (video) {
+        trailer = data.results.find(function (video) {
             return video.type === "Trailer" && video.site === "YouTube";
         });
 
-        console.log(trailer);
+        render();
 
     });

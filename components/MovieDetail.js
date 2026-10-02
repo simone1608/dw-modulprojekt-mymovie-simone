@@ -1,6 +1,26 @@
-export default function MovieDetail(movie, cast, rating) {
+export default function MovieDetail(movie, cast, rating, trailer) {
     let sectionElement = document.createElement("section");
     sectionElement.classList.add("movie-detail");
+
+    let mediaHTML = "";
+
+    if (trailer) {
+        mediaHTML = `
+            <iframe
+                class="detail-trailer"
+                src="https://www.youtube.com/embed/${trailer.key}"
+                title="${movie.title} trailer"
+                allowfullscreen>
+            </iframe>
+        `;
+    } else {
+        mediaHTML = `
+            <img
+                src=""
+                alt="${movie.title}"
+                class="detail-backdrop">
+        `;
+    }
 
     let hours = Math.floor(movie.runtime / 60);
     let minutes = movie.runtime % 60;
@@ -40,19 +60,18 @@ export default function MovieDetail(movie, cast, rating) {
     });
 
     sectionElement.innerHTML = `
-        <a href="index.html" class="back-arrow">
-            <img src="img/back-arrow.svg" alt="Back">
-        </a>
+        <div class="detail-controls">
+            <a href="index.html" class="back-arrow">
+                <img src="img/back-arrow.svg" alt="Back">
+            </a>
 
-        <label class="switch">
-            <input type="checkbox" id="switch">
-            <span class="slider"></span>
-        </label>
+            <label class="switch">
+                <input type="checkbox" id="switch">
+                <span class="slider"></span>
+            </label>
+        </div>
 
-        <img 
-            class="detail-backdrop"
-            src="https://image.tmdb.org/t/p/original${movie.backdrop_path}"
-            alt="${movie.title}">
+        ${mediaHTML}
 
 
         <div class="movie-info">
